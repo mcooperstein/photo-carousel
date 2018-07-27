@@ -44,8 +44,8 @@ class App extends Component {
   };
   render() {
     return (
-      <div className="App" style={styles.container}>
-        <button style={styles.buttonLeft} onClick={this.rotateImagesLeft}>
+      <div className="App" style={styles.parentContainer}>
+        {/* <button style={styles.buttonLeft} onClick={this.rotateImagesLeft}>
           LEFT
         </button>
         <div>
@@ -54,6 +54,17 @@ class App extends Component {
             src={this.state.images[this.state.currentImg]}
           />
         </div>
+        <button onClick={this.rotateImagesRight}>RIGHT</button> */}
+        <button style={styles.buttonLeft} onClick={this.rotateImagesLeft}>
+          LEFT
+        </button>
+        <div
+          style={{
+            backgroundImage: `url(${this.state.images[this.state.currentImg]})`,
+            height: "100%",
+            width: "100%"
+          }}
+        />
         <button onClick={this.rotateImagesRight}>RIGHT</button>
       </div>
     );
@@ -61,19 +72,28 @@ class App extends Component {
 }
 
 const styles = {
+  parentContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-around",
+    height: 500,
+    flex: 1,
+    border: "2px solid black"
+  },
   container: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
-    width: 500,
+    justifyContent: "space-around",
+    height: 500,
+    flex: 3,
     border: "2px solid black"
   },
   buttonLeft: {
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center"
   },
   buttonRight: {
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center"
   }
 };
